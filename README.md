@@ -1,21 +1,21 @@
-# Computer Networks project
+# Computer Networks Project
 
-This project implements a simple chat system using TCP sockets in Python.
+This project is a simple chat application implemented in Python using TCP sockets.
 
 ## Files
-- server.py – Server side implementation (multi-client, one-to-one chat)
-- client.py – Client side implementation
+- server.py - Server implementation that handles multiple clients and one to one chat.
+- client.py - Client implementation for sending and receiving messages.
 
 ## How to run
-1. Run the server:
+1. Start the server:
    python server.py
 
-2. Run two or more clients in separate terminals:
+2. Open two or more terminals and run the client:
    python client.py
 
 ## Protocol
-- After connecting, the client sends a username (one line).
-- Commands:
+- After connecting to the server, the client sends a username.
+- Supported commands:
   - CONNECT <username>
   - MSG <text>
   - DISCONNECT
