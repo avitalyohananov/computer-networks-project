@@ -17,16 +17,16 @@ The system uses a central server to manage connections between clients. Users ca
 ## Protocol & Commands
 After entering your username, you can use these commands:
 
-* "CONNECT username":
+* **`CONNECT <username>`**
   Start a chat session with another connected user.
   Example: CONNECT alice
 
-* "MSG text":
+* **`MSG <text>`**
   Send a message to the user you are currently connected to.
   Example: MSG Hello there!
 
-* "DISCONNECT":
+* **`DISCONNECT`**
   End the current chat session (but stay connected to the server).
 
-* "exit":
+* **`exit`**
   Close the application.
