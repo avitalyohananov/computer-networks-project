@@ -1,0 +1,13 @@
+msg_id,app_protocol,src_app,dst_app,message,timestamp
+1,HTTP,client_browser,web_server,GET /index.html,0.010
+2,HTTP,web_server,client_browser,200 OK (index.html),0.018
+3,HTTP,client_browser,web_server,GET /styles.css,0.026
+4,HTTP,web_server,client_browser,200 OK (styles.css),0.034
+5,HTTP,client_browser,web_server,POST /login username=avital,0.045
+6,HTTP,web_server,client_browser,302 Redirect /home,0.052
+7,HTTP,client_browser,web_server,GET /home,0.060
+8,HTTP,web_server,client_browser,200 OK (home page),0.072
+9,HTTP,client_browser,web_server,GET /images/logo.png,0.083
+10,HTTP,web_server,client_browser,200 OK (logo.png),0.095
+11,HTTP,client_browser,web_server,GET /logout,0.110
+12,HTTP,web_server,client_browser,200 OK Logged out,0.121
