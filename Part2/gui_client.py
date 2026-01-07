@@ -61,6 +61,7 @@ class ChatClient:
         self.chat_area.tag_config('me', foreground="#4da6ff")
         self.chat_area.tag_config('peer', foreground="#85e085")
         self.chat_area.tag_config('sys', foreground="yellow")
+        self.chat_area.tag_config('error', foreground="#ff4d4d")
 
         self.bottom_frame = tk.Frame(self.window, bg=BG_MAIN, pady=10)
         self.bottom_frame.pack(fill='x', padx=10)
@@ -110,7 +111,7 @@ class ChatClient:
             self.add_to_chat(f"Me: {msg}", 'me')
             self.entry_msg.delete(0, 'end')
         else:
-            self.add_to_chat("[System] You are not connected to anyone.", 'sys')
+            messagebox.showwarning("Not Connected", "You are not connected to anyone.\nPlease connect to a user first.")
 
     def add_to_chat(self, text, tag=None):
         self.chat_area.config(state='normal')
@@ -144,11 +145,25 @@ class ChatClient:
             self.btn_disconnect.config(state='disabled')
             self.add_to_chat("--- System: Chat ended ---", 'sys')
             
+            if "disconnected from" in msg or "disconnected" in msg:
+                 messagebox.showinfo("Chat Ended", "The other user has disconnected.")
+            
         elif ":" in msg and not msg.startswith("INFO") and not msg.startswith("ERROR"):
             parts = msg.split(":", 1)
             sender = parts[0]
             content = parts[1]
             self.add_to_chat(f"{sender}: {content}", 'peer')
+
+        elif msg.startswith("ERROR:"):
+            messagebox.showerror("Error", msg)
+            
+            if "taken" in msg:
+                self.btn_login.config(state='normal', text="Login")
+                self.entry_user.config(state='normal')
+                self.btn_connect.config(state='disabled')
+                self.username = ""
+            
+            self.add_to_chat(msg, 'error')
             
         else:
             self.add_to_chat(msg)
